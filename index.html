@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>НеЛомайся — двигайся, не ломайся</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500;1,9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+
+<!-- Кастомный курсор -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ================= MODE BAR ================= -->
+<header class="modebar" data-screen-label="00 Modebar">
+  <div class="brand">
+    <span class="brand-mark">Н</span>
+    <span>НеЛомайся</span>
+  </div>
+  <nav class="seg" role="tablist" aria-label="Режим просмотра">
+    <button data-view="landing" class="active">Лендинг</button>
+    <button data-view="app">Прототип</button>
+  </nav>
+  <div class="util">
+    <button class="icon-btn" id="themeToggle" title="Светлая / Тёмная тема">◐</button>
+    <a class="btn gold" href="#" onclick="document.querySelector('.modebar .seg button[data-view=&quot;app&quot;]').click();return false;">Запустить</a>
+  </div>
+</header>
+
+<!-- ============================================================
+     ВИД 1. ЛЕНДИНГ — Editorial v4
+     ============================================================ -->
+<main id="viewLanding" class="landing" data-screen-label="01 Landing">
+
+  <!-- HERO -->
+  <section class="container hero">
+    <div class="hero-bg-word" aria-hidden="true"><em>Atelier</em></div>
+
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Сервис уже работает в&nbsp;Владимире</span>
+      <h1>
+        Двигайся.<br>
+        <span class="italic">Не ломайся.</span><br>
+        План&nbsp;— за&nbsp;<span class="gold-line">2 минуты</span>.
+      </h1>
+      <p class="lead">
+        Цифровой ассистент для тех, кто тренируется сам. Не&nbsp;ставит диагнозов, не&nbsp;продаёт абонементы&nbsp;— просто говорит, что делать прямо&nbsp;сейчас.
+      </p>
+      <div class="cta-row">
+        <button class="btn gold lg" onclick="document.querySelector('.modebar .seg button[data-view=&quot;app&quot;]').click()">Открыть прототип →</button>
+        <a class="btn ghost lg" href="#how">Как это работает</a>
+      </div>
+      <div class="stats">
+        <div><div class="num">2<span class="small">мин</span></div><div class="lbl">от&nbsp;ощущения<br>до&nbsp;плана действий</div></div>
+        <div><div class="num">10</div><div class="lbl">зон тела<br>на&nbsp;интерактивной карте</div></div>
+        <div><div class="num">−46<span class="small">%</span></div><div class="lbl">травматизма<br>по&nbsp;FIFA&nbsp;11+</div></div>
+      </div>
+    </div>
+
+    <!-- Hero stage с интерактивным телом -->
+    <div class="hero-stage">
+      <div class="glow-orb"></div>
+      <div class="glow-orb-2"></div>
+
+      <!-- Координатные подписи sci-fi -->
+      <div class="hero-readout r1">
+        <span class="label">Зона</span>
+        <span class="val">SHOULDER · 02</span>
+        <div class="line"></div>
+      </div>
+      <div class="hero-readout r2">
+        <span class="label">Маршрут</span>
+        <span class="val">ROUTE · GREEN</span>
+        <div class="line"></div>
+      </div>
+      <div class="hero-readout r3">
+        <span class="label">Диагностика</span>
+        <span class="val">5 of 7 questions</span>
+        <div class="line"></div>
+      </div>
+
+      <div class="hero-stage-inner" id="heroBodyMap"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="item">Двигайся</span>
+      <span class="item italic">не ломайся</span>
+      <span class="item">слушай тело</span>
+      <span class="item italic">тренируйся умно</span>
+      <span class="item">Двигайся</span>
+      <span class="item italic">не ломайся</span>
+      <span class="item">слушай тело</span>
+      <span class="item italic">тренируйся умно</span>
+    </div>
+  </div>
+
+  <!-- ПРОБЛЕМА -->
+  <section class="section">
+    <div class="container">
+      <div class="kicker reveal">Проблема</div>
+      <h2 class="reveal delay-1">Каждый <span class="italic">третий</span>, кто тренируется сам, ловит травму. Помощь дорогая. Запись&nbsp;— недели.</h2>
+      <p class="lead reveal delay-2">
+        Тренер&nbsp;— от&nbsp;5&nbsp;000&nbsp;₽ за&nbsp;занятие. Спортивный&nbsp;врач&nbsp;— через две недели. А&nbsp;в&nbsp;ленте — один блогер советует одно, другой&nbsp;— противоположное. Так теряются месяцы тренировок и&nbsp;тысячи рублей на&nbsp;восстановление.
+      </p>
+
+      <!-- Comparison table -->
+      <div class="compare reveal delay-3">
+        <div class="compare-col before">
+          <h4>Без приложения</h4>
+          <ul>
+            <li>Гуглить «болит колено» в&nbsp;3&nbsp;часа ночи</li>
+            <li>Получить пять противоречащих советов от&nbsp;блогеров</li>
+            <li>Ждать запись к&nbsp;врачу две недели</li>
+            <li>Бросить тренировки «на&nbsp;всякий случай»</li>
+            <li>Потерять форму и&nbsp;вернуться через 2 месяца</li>
+          </ul>
+        </div>
+        <div class="compare-col after">
+          <h4>С НеЛомайся</h4>
+          <ul>
+            <li>Тапнуть зону на&nbsp;карте тела</li>
+            <li>Ответить на&nbsp;5–7 коротких вопросов</li>
+            <li>За&nbsp;2&nbsp;минуты получить понятный план</li>
+            <li>Безопасные упражнения или маршрут к&nbsp;врачу</li>
+            <li>Тренироваться без потерь</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 ЯДРА -->
+  <section class="section alt" id="how">
+    <div class="container">
+      <div class="kicker reveal">Что внутри</div>
+      <h2 class="reveal delay-1">Четыре фишки в&nbsp;одном интерфейсе. <span class="italic">Минимум жестов&nbsp;— максимум смысла.</span></h2>
+      <div class="feat-grid">
+        <div class="feat reveal">
+          <div class="feat-num">001</div>
+          <h3>Карта <span class="italic">тела</span></h3>
+          <p>Тапнул по&nbsp;зоне&nbsp;— приложение знает, что у&nbsp;тебя. Передняя и&nbsp;задняя проекции, 10&nbsp;зон, плавный flip.</p>
+        </div>
+        <div class="feat reveal delay-1">
+          <div class="feat-num">002</div>
+          <h3>Smart <span class="italic">Routing</span></h3>
+          <p>5–7&nbsp;коротких вопросов. Без воды и&nbsp;медицинского жаргона&nbsp;— только то, что важно прямо сейчас.</p>
+        </div>
+        <div class="feat reveal delay-2">
+          <div class="feat-num">003</div>
+          <h3>Visual <span class="italic">RehabPath</span></h3>
+          <p>15&nbsp;коротких упражнений на&nbsp;основе FIFA&nbsp;11+. Доказанное снижение травматизма до&nbsp;46%.</p>
+        </div>
+        <div class="feat reveal delay-3">
+          <div class="feat-num">004</div>
+          <h3>Личный <span class="italic">дневник</span></h3>
+          <p>Помнит, что у&nbsp;тебя болело и&nbsp;когда. Через месяц видно, какие зоны к&nbsp;тебе прицепились.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USER FLOW -->
+  <section class="section">
+    <div class="container">
+      <div class="kicker reveal">Как это работает</div>
+      <h2 class="reveal delay-1">Четыре шага. Две минуты. <span class="italic">Один</span> план.</h2>
+      <div class="flow">
+        <div class="step reveal"><h4>Зона на&nbsp;карте</h4><p>Тапнул по&nbsp;тому, что беспокоит&nbsp;— или по&nbsp;тому, что хочешь беречь.</p></div>
+        <div class="step reveal delay-1"><h4>Чек безопасности</h4><p>Восемь спортивных красных флагов. Только реальные сигналы.</p></div>
+        <div class="step reveal delay-2"><h4>Опрос</h4><p>5–7 закрытых вопросов: интенсивность, длительность, нагрузка.</p></div>
+        <div class="step reveal delay-3"><h4>План</h4><p>Зелёный, жёлтый или красный маршрут. Программа или к&nbsp;врачу.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 МАРШРУТА -->
+  <section class="section alt">
+    <div class="container">
+      <div class="kicker reveal">Три маршрута</div>
+      <h2 class="reveal delay-1">Прозрачная логика. <span class="italic">Никакого ИИ-волшебства.</span></h2>
+      <p class="lead reveal delay-2">Движок маршрутизации&nbsp;— детерминированный. Каждое решение можно объяснить и&nbsp;проверить. Никакой свободной генерации.</p>
+      <div class="routes-row">
+        <div class="route-card green reveal">
+          <div class="visual">G</div>
+          <span class="tag green">Green</span>
+          <h4 style="margin-top:14px">Безопасная программа</h4>
+          <p>Боль до&nbsp;4&nbsp;из&nbsp;10, нет ограничений и&nbsp;стоп-сигналов. Открывается RehabPath под зону.</p>
+          <div class="formula">if NRS &lt; 5 &amp;&amp; limit &lt; 2 &amp;&amp; !redflags</div>
+        </div>
+        <div class="route-card yellow reveal delay-1">
+          <div class="visual">Y</div>
+          <span class="tag yellow">Yellow</span>
+          <h4 style="margin-top:14px">Мягкая программа<br>+ наблюдение</h4>
+          <p>Боль 5–7 либо есть ограничения движения. Адаптированный набор упражнений и&nbsp;контроль 7&nbsp;дней.</p>
+          <div class="formula">elif NRS ≥ 5 || limit ≥ 2 || chronic</div>
+        </div>
+        <div class="route-card red reveal delay-2">
+          <div class="visual">R</div>
+          <span class="tag red">Red</span>
+          <h4 style="margin-top:14px">К&nbsp;врачу-партнёру</h4>
+          <p>Боль ≥&nbsp;8, любой стоп-сигнал или хроника с&nbsp;ограничениями. Партнёрская витрина + запись.</p>
+          <div class="formula">elif NRS ≥ 8 || redflags || chronic+limit</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ТЕСТИМОНИАЛЫ -->
+  <section class="section">
+    <div class="container">
+      <div class="kicker reveal">Голос аудитории</div>
+      <h2 class="reveal delay-1">Что говорят те, <span class="italic">кто уже попробовал</span></h2>
+      <div class="testimonials">
+        <div class="t-card reveal">
+          <span class="quote-mark">“</span>
+          <blockquote>Поясница ныла после становой. Открыл&nbsp;— получил мост и&nbsp;кошку-корову. На&nbsp;следующий день уже не&nbsp;ныло.</blockquote>
+          <div class="t-meta">
+            <div class="t-avatar">АК</div>
+            <div><div class="t-name">Алексей К.</div><div class="t-role">Студент ВлГУ, 4&nbsp;тренировки в&nbsp;неделю</div></div>
+          </div>
+        </div>
+        <div class="t-card reveal delay-1">
+          <span class="quote-mark">“</span>
+          <blockquote>Раньше при любой боли лезла в&nbsp;поиск. Теперь просто открываю «НеЛомайся». Знаю, что не&nbsp;поставит диагноз — но&nbsp;спокойно скажет, что делать прямо сейчас.</blockquote>
+          <div class="t-meta">
+            <div class="t-avatar">МР</div>
+            <div><div class="t-name">Мария&nbsp;Р.</div><div class="t-role">Бегает полумарафоны, г.&nbsp;Владимир</div></div>
+          </div>
+        </div>
+        <div class="t-card reveal delay-2">
+          <span class="quote-mark">“</span>
+          <blockquote>В&nbsp;колене щёлкнуло при прыжках. Приложение сразу красный, дало клинику&nbsp;— записался на&nbsp;тот&nbsp;же день. Без него копался&nbsp;бы в&nbsp;ленте до&nbsp;ночи.</blockquote>
+          <div class="t-meta">
+            <div class="t-avatar">ИС</div>
+            <div><div class="t-name">Иван&nbsp;С.</div><div class="t-role">CrossFit, 26&nbsp;лет</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ТАРИФЫ -->
+  <section class="section alt">
+    <div class="container">
+      <div class="kicker reveal">Цена</div>
+      <h2 class="reveal delay-1">Дешевле кофе. <span class="italic">Дороже не&nbsp;нужно.</span></h2>
+      <p class="lead reveal delay-2">Базовое&nbsp;— бесплатно. Чтобы открыть всё&nbsp;— меньше, чем стоит одно занятие с&nbsp;тренером.</p>
+      <div class="pricing">
+        <div class="price-card reveal">
+          <div class="pname">Free</div>
+          <div class="pprice">0&nbsp;₽</div>
+          <div class="pper">Знакомство с&nbsp;сервисом</div>
+          <ul>
+            <li>Карта тела&nbsp;— все 10&nbsp;зон</li>
+            <li>1&nbsp;запуск Smart&nbsp;Routing в&nbsp;неделю</li>
+            <li>3&nbsp;упражнения из&nbsp;15</li>
+            <li>История за&nbsp;7&nbsp;дней</li>
+          </ul>
+        </div>
+        <div class="price-card featured reveal delay-1">
+          <div class="pname">Monthly <span class="tag gold" style="margin-left:6px;background:var(--gold);color:#1A140A">★ Top</span></div>
+          <div class="pprice">299&nbsp;₽</div>
+          <div class="pper">в&nbsp;месяц&nbsp;· оплата ЮKassa</div>
+          <ul>
+            <li>Безлимит Smart&nbsp;Routing</li>
+            <li>Все 15&nbsp;упражнений FIFA&nbsp;11+</li>
+            <li>История без ограничений</li>
+            <li>Дневник самочувствия</li>
+            <li>Программа «Без боли»</li>
+          </ul>
+          <button class="btn gold full" onclick="document.querySelector('.modebar .seg button[data-view=&quot;app&quot;]').click()">Попробовать в&nbsp;прототипе →</button>
+        </div>
+        <div class="price-card reveal delay-2">
+          <div class="pname">Annual</div>
+          <div class="pprice">2&nbsp;490&nbsp;₽</div>
+          <div class="pper">в&nbsp;год&nbsp;· экономия 30%</div>
+          <ul>
+            <li>Всё из&nbsp;месячного</li>
+            <li>Эквивалент 207&nbsp;₽/мес</li>
+            <li>Возврат в&nbsp;течение 14&nbsp;дней</li>
+            <li>Приоритетная поддержка</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="kicker reveal">FAQ</div>
+      <h2 class="reveal delay-1">Что обычно <span class="italic">спрашивают</span></h2>
+      <div class="faq reveal delay-2">
+        <details open>
+          <summary>А&nbsp;это вообще не&nbsp;медицина?</summary>
+          <p>Это&nbsp;— информационно-справочный сервис. «НеЛомайся» не&nbsp;ставит диагноз, не&nbsp;назначает лечение и&nbsp;не&nbsp;оказывает медицинских услуг. Если что-то серьёзное&nbsp;— приложение само скажет «иди к&nbsp;врачу» и&nbsp;покажет ближайших.</p>
+        </details>
+        <details>
+          <summary>ИИ&nbsp;там что-то выдумывает?</summary>
+          <p>Нет. Все ответы&nbsp;— по&nbsp;закрытым правилам, которые можно проверить. Языковая модель используется только для того, чтобы переформулировать заранее утверждённые тексты&nbsp;— не&nbsp;для свободной генерации.</p>
+        </details>
+        <details>
+          <summary>Где хранятся мои данные?</summary>
+          <p>На&nbsp;серверах в&nbsp;России (Yandex&nbsp;Cloud, 152-ФЗ). Удалить аккаунт&nbsp;— один тап в&nbsp;настройках. Никаких «удаление через поддержку».</p>
+        </details>
+        <details>
+          <summary>На&nbsp;чём собрано приложение?</summary>
+          <p>Flutter (iOS и&nbsp;Android), Node.js на&nbsp;бэкенде, PostgreSQL в&nbsp;Yandex&nbsp;Cloud, ЮKassa&nbsp;— платежи, AppMetrica&nbsp;— аналитика. Российский стек, всё внутри страны.</p>
+        </details>
+        <details>
+          <summary>Откуда берутся врачи в&nbsp;красном маршруте?</summary>
+          <p>Партнёрские клиники в&nbsp;вашем городе. На&nbsp;старте&nbsp;— Владимир: «Орто-Профи» и&nbsp;«Активита». Платят клиники&nbsp;— модель CPA, 500–1500&nbsp;₽ за&nbsp;подтверждённую запись.</p>
+        </details>
+      </div>
+
+      <div class="legal-strip">
+        <strong>Юридически.</strong> Сервис «НеЛомайся»&nbsp;— информационно-справочный. Не&nbsp;медицинское изделие. Не&nbsp;медицинская услуга. Не&nbsp;осуществляет диагностику. При острой травме&nbsp;— 112.
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BLOCK -->
+  <section class="container">
+    <div class="cta-block reveal">
+      <span class="cta-eyebrow">— Финальный шаг</span>
+      <h2>Тренируйся<br><span class="italic">без потерь.</span></h2>
+      <p>Открой прототип и&nbsp;прокликай все три сценария&nbsp;— зелёный, жёлтый, красный. Это займёт минуту.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <button class="btn gold lg" onclick="document.querySelector('.modebar .seg button[data-view=&quot;app&quot;]').click()">Открыть прототип →</button>
+        <a class="btn ghost lg" href="#how">Ещё раз про логику</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site container">
+    <div>© 2026 НеЛомайся · ВлГУ, Владимир</div>
+    <div>Лицензионное соглашение&nbsp;· Политика конфиденциальности&nbsp;· Публичная оферта</div>
+  </footer>
+</main>
+
+<!-- ============================================================
+     ВИД 2. ИНТЕРАКТИВНЫЙ ПРОТОТИП
+     ============================================================ -->
+<main id="viewApp" class="app-stage" style="display:none" data-screen-label="02 App">
+
+  <aside class="info-pane">
+    <div class="kicker" style="text-transform:uppercase;letter-spacing:0.18em;font-size:11px;font-weight:500;color:var(--gold);font-family:var(--font-mono)">— Интерактивный прототип</div>
+    <h2>Прокликай продукт&nbsp;— <span class="italic">всё работает</span> по-настоящему</h2>
+    <p>
+      Все экраны в&nbsp;едином потоке: онбординг, карта тела, проверка стоп-сигналов,
+      опросник Smart&nbsp;Routing, экран результата, библиотека упражнений, личный кабинет,
+      партнёрская витрина и&nbsp;оплата.
+    </p>
+
+    <div class="meta">
+      <div><div class="k">Стек</div><div class="v">Flutter · Node.js · PostgreSQL</div></div>
+      <div><div class="k">Дистрибуция</div><div class="v">RuStore · AppGallery · PWA</div></div>
+      <div><div class="k">Регион пилота</div><div class="v">Владимир</div></div>
+      <div><div class="k">Аудитория</div><div class="v">18–35 лет</div></div>
+    </div>
+
+    <div class="scenario-list" id="scenarioList">
+      <h4>— Быстрые сценарии</h4>
+      <button data-scenario="home">
+        <strong>① Полный путь с&nbsp;нуля</strong>
+        <div class="desc">Главный экран → выбор зоны → опрос → результат</div>
+      </button>
+      <button data-scenario="prevent">
+        <strong>② Профилактика (всё хорошо)</strong>
+        <div class="desc">Поясница, NRS&nbsp;0, проверка для профилактики → зелёный</div>
+      </button>
+      <button data-scenario="green">
+        <strong>③ Зелёный — лёгкий дискомфорт</strong>
+        <div class="desc">Поясница, NRS&nbsp;3 → программа упражнений</div>
+      </button>
+      <button data-scenario="yellow">
+        <strong>④ Жёлтый — заметно</strong>
+        <div class="desc">Колено, NRS&nbsp;6, ограничение → мягкая программа</div>
+      </button>
+      <button data-scenario="red">
+        <strong>⑤ Красный — стоп-сигнал</strong>
+        <div class="desc">Плечо, не&nbsp;поднимается рука → витрина клиник</div>
+      </button>
+      <button data-scenario="paywall">
+        <strong>⑥ Подписка ЮKassa</strong>
+        <div class="desc">Лимит превышен → выбор тарифа → оплата</div>
+      </button>
+    </div>
+
+    <div class="legal-strip" style="margin-top:24px">
+      Прототип демонстрирует логику и&nbsp;UX. В&nbsp;рабочей сборке: SVG-карта дополнена Rive-анимациями,
+      авторизация&nbsp;— Yandex&nbsp;ID + SMS, платежи&nbsp;— ЮKassa, аналитика&nbsp;— AppMetrica и&nbsp;Yandex&nbsp;Metrica.
+    </div>
+  </aside>
+
+  <div>
+    <div class="phone-frame" data-screen-label="03 Phone">
+      <div class="phone-screen">
+        <div class="phone-statusbar">
+          <span>9:41</span>
+          <span class="icons"><span></span><span></span><span class="battery"></span></span>
+        </div>
+        <div class="phone-content" id="phoneScreens"></div>
+        <div class="tabbar" id="tabbar"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- TWEAKS -->
+<aside class="tweaks" id="tweaks" aria-label="Tweaks">
+  <h4>— Tweaks</h4>
+  <div class="row">
+    <span>Палитра</span>
+    <div class="swatches" id="tweakSwatches"></div>
+  </div>
+  <div class="row">
+    <span>Скругления</span>
+    <input type="range" id="tweakRadius" min="6" max="22" value="14" style="width:120px">
+  </div>
+  <div class="row">
+    <span>Плотность</span>
+    <select id="tweakDensity">
+      <option value="cozy" selected>Стандартная</option>
+      <option value="compact">Компактная</option>
+      <option value="spacious">Просторная</option>
+    </select>
+  </div>
+  <div class="row">
+    <span>Тема</span>
+    <button class="btn ghost" style="padding:6px 10px" onclick="document.getElementById('themeToggle').click()">Переключить</button>
+  </div>
+</aside>
+
+<script>
+const NL_TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "brand": "#E6C58A",
+  "radius": 14,
+  "density": "cozy",
+  "theme": "dark"
+}/*EDITMODE-END*/;
+
+document.addEventListener('DOMContentLoaded', () => {
+  // === Scroll-reveal ===
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // === Кастомный курсор ===
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  if (dot && ring && window.matchMedia('(pointer: fine)').matches) {
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function tick() {
+      rx += (mx - rx) * 0.18;
+      ry += (my - ry) * 0.18;
+      dot.style.transform  = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+      requestAnimationFrame(tick);
+    }
+    tick();
+    // Hover state on interactive elements
+    document.querySelectorAll('a, button, .feat, .route-card, .t-card, .price-card, .ex-card, .choice, .hotspot, .partner-card, .compare-col li, .plan-card').forEach(el => {
+      el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+      el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+    });
+  }
+
+  // === Hero body map render ===
+  const heroEl = document.getElementById('heroBodyMap');
+  if (heroEl && window.NL_renderBodyMap) {
+    let side = 'front';
+    let selected = 'shoulder';
+    const renderHero = () => window.NL_renderBodyMap(heroEl, {
+      side, selectedZone: selected,
+      onSelect: (z) => { selected = z; renderHero(); }
+    });
+    renderHero();
+    // Auto flip every 8s for liveness
+    let flipTimer = setInterval(() => {
+      side = side === 'front' ? 'back' : 'front';
+      renderHero();
+    }, 8000);
+  }
+});
+</script>
+
+<script src="assets/data.js"></script>
+<script src="assets/body-map.js"></script>
+<script src="assets/routing-engine.js"></script>
+<script src="assets/app.js"></script>
+
+</body>
+</html>
